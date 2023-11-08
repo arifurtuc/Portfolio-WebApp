@@ -25,7 +25,7 @@ with col2:
 st.write("My Apps")
 
 # Create two columns: col3 and col4 for content layout
-col3, col4 = st.columns(2)
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
 
 # Read data from a CSV file using pandas
 df = pandas.read_csv("data.csv", sep=";")
@@ -34,8 +34,14 @@ df = pandas.read_csv("data.csv", sep=";")
 with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
 
 # Populate col4 with the remaining rows of data
 with col4:
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
