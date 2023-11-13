@@ -1,20 +1,27 @@
-import smtplib, ssl
+import smtplib
+import ssl
 
-host = "smtp.gmail.com"
-port = 465
 
-username = "arifdiu2@gmail.com"
-password = ""
+# Function to send an email using Gmail SMTP
+def send_email(message):
+    # Gmail SMTP server details
+    host = "smtp.gmail.com"
+    port = 465
 
-receiver = "arifdiu2@gmail.com"
-context = ssl.create_default_context()
+    # Sender's Gmail account credentials
+    username = "arifdiu2@gmail.com"
+    password = ""
 
-message = """\
-Subject: Hi! 
-How are you?
-Bye!
-"""
+    # Receiver's email address
+    receiver = "arifdiu2@gmail.com"
 
-with smtplib.SMTP_SSL(host, port, context=context) as server:
-    server.login(username, password)
-    server.sendmail(username, receiver, message)
+    # Create a secure SSL context
+    context = ssl.create_default_context()
+
+    # Connect to the SMTP server and send the email
+    with smtplib.SMTP_SSL(host, port, context=context) as server:
+        # Login to the sender's Gmail account
+        server.login(username, password)
+
+        # Send the email from the sender to the receiver
+        server.sendmail(username, receiver, message)
