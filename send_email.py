@@ -1,5 +1,6 @@
 import smtplib
 import ssl
+import os
 
 
 # Function to send an email using Gmail SMTP
@@ -10,7 +11,7 @@ def send_email(message):
 
     # Sender's Gmail account credentials
     username = "arifdiu2@gmail.com"
-    password = ""
+    password = os.getenv("PASSWORD")
 
     # Receiver's email address
     receiver = "arifdiu2@gmail.com"
